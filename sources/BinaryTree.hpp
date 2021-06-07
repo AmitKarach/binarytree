@@ -18,6 +18,7 @@ namespace ariel{
 
         Node* root;
 
+        //find a node in a tree using inorder
         Node* findNode(T value)
         {
             if(root != nullptr)
@@ -32,6 +33,8 @@ namespace ariel{
             }
             return nullptr;
         }
+
+        //deleting all nodes in a tree
         void removeTree()
         {
             if(!root)
@@ -70,9 +73,11 @@ namespace ariel{
         BinaryTree(){
             root = nullptr;
         }
+        
         ~BinaryTree(){
             removeTree();
         }
+        
         BinaryTree(const BinaryTree& otherTree){   
             removeTree();
             copy(otherTree);
@@ -339,23 +344,26 @@ namespace ariel{
                     else
                     {
                         root = ptr;
-                            while (ptr !=nullptr && visited.find(ptr) == visited.end()) {
-                                if (ptr->left != nullptr && visited.find(ptr->left) == visited.end()){
-                                    ptr = ptr->left;
+                        while (ptr !=nullptr && visited.find(ptr) == visited.end()) 
+                        {
+                            if (ptr->left != nullptr && visited.find(ptr->left) == visited.end())
+                            {
+                                ptr = ptr->left;
+                            }
+                            else
+                            {
+                                if (ptr->right && visited.find(ptr->right) == visited.end())
+                                {
+                                    ptr = ptr->right;
                                 }
-                                else{
-                                    if (ptr->right && visited.find(ptr->right) == visited.end())
-                                    {
-                                        ptr = ptr->right;
-                                    }
-                                    else 
-                                    {
-                                        currNodePtr = ptr;
-                                        visited.insert(ptr);
-                                        break;
-                                    }
+                                else 
+                                {
+                                    currNodePtr = ptr;
+                                    visited.insert(ptr);
+                                    break;
                                 }
                             }
+                        }
                     }
                 }
 
