@@ -48,12 +48,12 @@ namespace ariel{
 
         void deepCopy(Node* node, Node* otherTreeNode)
         {
-            if(otherTreeNode->right)
+            if(otherTreeNode->right !=nullptr)
             {
                 node->right = new Node(otherTreeNode->right->node_data);
                 deepCopy(node->right, otherTreeNode->right);
             }
-            if(otherTreeNode->left)
+            if(otherTreeNode->left !=nullptr)
             {
                 node->left = new Node(otherTreeNode->left->node_data);
                 deepCopy(node->left, otherTreeNode->left);
@@ -62,7 +62,7 @@ namespace ariel{
 
         void copy(const BinaryTree& otherTree)
         {
-            if(otherTree.root)
+            if(otherTree.root !=nullptr)
             {
                 root = new Node(otherTree.root->node_data);
                 deepCopy(root, otherTree.root);
